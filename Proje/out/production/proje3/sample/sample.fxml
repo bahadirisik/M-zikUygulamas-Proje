@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane fx:id="album_list_sahne" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#albumden_geri" prefHeight="54.0" prefWidth="103.0" text="Geri" />
+            <ScrollPane layoutX="21.0" layoutY="100.0" prefHeight="400.0" prefWidth="450.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="450.0">
+                     <children>
+                        <ListView fx:id="album_list" prefHeight="400.0" prefWidth="450.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Label layoutX="312.0" layoutY="27.0" prefHeight="42.0" prefWidth="330.0" text="                          Albümler" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ScrollPane layoutX="477.0" layoutY="100.0" prefHeight="400.0" prefWidth="450.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="450.0">
+                     <children>
+                        <ListView fx:id="album_sarki_list" prefHeight="400.0" prefWidth="450.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+            <Button layoutX="650.0" layoutY="522.0" mnemonicParsing="false" onMouseClicked="#album_sarki_ekle" prefHeight="54.0" prefWidth="103.0" text="Ekle" />
+            <Button layoutX="194.0" layoutY="522.0" mnemonicParsing="false" onMouseClicked="#album_sarkilarini_listele" prefHeight="54.0" prefWidth="103.0" text="Listele" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="album_sahne" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Label layoutX="162.0" layoutY="24.0" prefHeight="30.0" prefWidth="626.0" text="Albüm Oluşturma Sayfasındasın Lütfen Album Adı Giriniz Eğer Girilen Ad Veri Tabanında Yok İse Oluşturulacaktır" textFill="WHITE" />
+            <Label layoutX="70.0" layoutY="120.0" prefHeight="26.0" prefWidth="150.0" text="Albüm Ad" textFill="WHITE" />
+            <TextField fx:id="album_ad" layoutX="71.0" layoutY="163.0" />
+            <Button layoutX="26.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#onceki_sayfa" prefHeight="42.0" prefWidth="86.0" text="Geri" />
+            <Button layoutX="102.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#sorgula" prefHeight="26.0" prefWidth="86.0" text="Sorgula" />
+            <ScrollPane layoutX="324.0" layoutY="89.0" prefHeight="500.0" prefWidth="600.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="600.0">
+                     <children>
+                        <ListView fx:id="tum_sarkilar1" prefHeight="1000.0" prefWidth="600.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Button layoutX="97.0" layoutY="516.0" mnemonicParsing="false" onMouseClicked="#album_ekle" prefHeight="54.0" prefWidth="122.0" text="Ekle" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="profil_calma_list_sahne" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <ScrollPane layoutX="10.0" layoutY="85.0" prefHeight="440.0" prefWidth="300.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="300.0">
+                     <children>
+                        <ListView fx:id="profil_jazz" prefHeight="440.0" prefWidth="300.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <ScrollPane layoutX="325.0" layoutY="85.0" prefHeight="440.0" prefWidth="300.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="300.0">
+                     <children>
+                        <ListView fx:id="profil_pop" prefHeight="440.0" prefWidth="300.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <ScrollPane layoutX="640.0" layoutY="85.0" prefHeight="440.0" prefWidth="300.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="300.0">
+                     <children>
+                        <ListView fx:id="profil_klasic" prefHeight="440.0" prefWidth="300.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Button layoutX="391.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#sarkilari_ekle" prefHeight="42.0" prefWidth="143.0" text="Ekle" />
+            <Label fx:id="profil_label2" layoutX="325.0" layoutY="14.0" prefHeight="42.0" prefWidth="166.0" />
+            <Label layoutX="509.0" layoutY="14.0" prefHeight="42.0" prefWidth="180.0" text="Kullanıcısının Çalma Listeleri" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#Profil_calma_list_geri" prefHeight="42.0" prefWidth="103.0" text="Geri" />
+            <Label layoutX="92.0" layoutY="56.0" prefHeight="26.0" prefWidth="103.0" text="           Jazz" textFill="WHITE" />
+            <Label layoutX="423.0" layoutY="56.0" prefHeight="26.0" prefWidth="103.0" text="            Pop" textFill="WHITE" />
+            <Label layoutX="738.0" layoutY="56.0" prefHeight="26.0" prefWidth="103.0" text="          Klasic" textFill="WHITE" />
+            <Label fx:id="profil_var" layoutX="18.0" layoutY="543.0" prefHeight="42.0" prefWidth="250.0" text="                       Şarkı Zaten Var" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="profil_eklendi" layoutX="649.0" layoutY="543.0" prefHeight="42.0" prefWidth="240.0" text="                          Şarkı Eklendi" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="arama_sonuclari_sahne" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Label layoutX="475.0" layoutY="55.0" prefHeight="46.0" prefWidth="166.0" text="İle İlgili Arama Sonuçları" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="at_label" layoutX="363.0" layoutY="57.0" prefHeight="42.0" prefWidth="103.0" />
+            <ListView fx:id="arama_sonuclari" layoutX="181.0" layoutY="120.0" prefHeight="463.0" prefWidth="603.0" />
+            <Button layoutX="812.0" layoutY="171.0" mnemonicParsing="false" onMouseClicked="#go_profil" prefHeight="54.0" prefWidth="115.0" text="Profie Git" />
+            <Button layoutX="29.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#arama_geri" prefHeight="54.0" prefWidth="115.0" text="Geri" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="kullanici_profil" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Label fx:id="add_gir" layoutX="385.0" layoutY="78.0" prefHeight="46.0" prefWidth="180.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="112.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#Profil_calma_list" prefHeight="110.0" prefWidth="200.0" text="Çalma Listem" />
+            <Button layoutX="387.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#takip_et" prefHeight="110.0" prefWidth="200.0" text="Takip Et" />
+            <Button layoutX="677.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#takip_cik" prefHeight="110.0" prefWidth="200.0" text="Takipten Çık" />
+            <Label fx:id="takip_label_1" layoutX="52.0" layoutY="175.0" prefHeight="42.0" prefWidth="159.0" text="Takip Ediyorsunuz" textFill="WHITE" visible="false" />
+            <Button layoutX="789.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#profil_geri" prefHeight="46.0" prefWidth="122.0" text="Geri" />
+            <Label fx:id="takip_et_hata" layoutX="296.0" layoutY="493.0" prefHeight="46.0" prefWidth="358.0" text="Takip Etmek İstediğiniz Kişi Normal Kullanıcıdır Takip Edemezsiniz" textFill="WHITE" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ulkeler_top_10_sahne" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Label layoutX="64.0" layoutY="51.0" prefHeight="18.0" prefWidth="130.0" text="Türkiye Top 10" textFill="WHITE" />
+            <Label layoutX="292.0" layoutY="51.0" prefHeight="18.0" prefWidth="130.0" text="ABD Top 10" textFill="WHITE" />
+            <Label layoutX="532.0" layoutY="51.0" prefHeight="18.0" prefWidth="130.0" text="Almanya Top 10 " textFill="WHITE" />
+            <Label layoutX="759.0" layoutY="51.0" prefHeight="18.0" prefWidth="130.0" text="İngiltere Top 10" textFill="WHITE" />
+            <ScrollPane layoutX="32.0" layoutY="85.0" prefHeight="500.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="400.0">
+                     <children>
+                        <ListView fx:id="tr_top_10" prefHeight="500.0" prefWidth="400.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <ScrollPane layoutX="257.0" layoutY="85.0" prefHeight="500.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="400.0">
+                     <children>
+                        <ListView fx:id="abd_top_10" prefHeight="500.0" prefWidth="400.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <ScrollPane layoutX="497.0" layoutY="85.0" prefHeight="500.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="400.0">
+                     <children>
+                        <ListView fx:id="al_top_10" prefHeight="500.0" prefWidth="400.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <ScrollPane layoutX="724.0" layoutY="85.0" prefHeight="500.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="400.0">
+                     <children>
+                        <ListView fx:id="ing_top_10" prefHeight="500.0" prefWidth="400.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#ulkeler_geri" prefHeight="26.0" prefWidth="115.0" text="Geri" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sahne5" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <ScrollPane layoutX="108.0" layoutY="89.0" prefHeight="500.0" prefWidth="800.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="800.0">
+                     <children>
+                        <ListView fx:id="Takip_edilen_list" prefHeight="500.0" prefWidth="800.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Button layoutX="22.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#sahne5_geri" prefHeight="54.0" prefWidth="130.0" text="Geri" />
+            <Label layoutX="430.0" layoutY="25.0" prefHeight="54.0" prefWidth="250.0" text="Çalma Listesine Bakıyorsun" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tur_label" alignment="CENTER_RIGHT" layoutX="301.0" layoutY="25.0" prefHeight="54.0" prefWidth="122.0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="tum_sarkilar_sahne" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Label layoutX="434.0" layoutY="27.0" prefHeight="42.0" prefWidth="211.0" text="Şarkılar Listesindesin" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ScrollPane layoutX="40.0" layoutY="86.0" prefHeight="500.0" prefWidth="450.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="450.0">
+                     <children>
+                        <ListView fx:id="tum_sarkilar_list" prefHeight="500.0" prefWidth="450.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Button layoutX="23.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#anasayfaya_geri" prefHeight="42.0" prefWidth="94.0" text="Geri" />
+            <Label layoutX="558.0" layoutY="86.0" prefHeight="30.0" prefWidth="314.0" text="Şarkı Üstüne Tıklarsanız O şarkıyı Takip Etmiş Olursunuz" textFill="WHITE" />
+            <Label fx:id="Sarki_var" layoutX="558.0" layoutY="143.0" prefHeight="30.0" prefWidth="314.0" text="Bu Şarkı Listenizde Bulunmaktadır" textFill="WHITE" visible="false" />
+            <Label fx:id="Sarki_eklendi" layoutX="558.0" layoutY="202.0" prefHeight="30.0" prefWidth="314.0" text="Şarkı Listenizde Başarı İle Eklendi" textFill="WHITE" visible="false" />
+            <Button layoutX="551.0" layoutY="324.0" mnemonicParsing="false" onMouseClicked="#Kullanici_sarki_ekle" prefHeight="54.0" prefWidth="143.0" text="Şarkıyı Ekle" />
+            <Label fx:id="label2" alignment="CENTER_RIGHT" layoutX="292.0" layoutY="27.0" prefHeight="42.0" prefWidth="130.0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sahne4" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Label fx:id="isim" layoutX="522.0" layoutY="14.0" prefHeight="30.0" prefWidth="130.0" style="-fx-background-radius: 10; -fx-background-color: #000000;" textFill="WHITE" />
+            <AnchorPane layoutX="669.0" prefHeight="600.0" prefWidth="280.0" style="-fx-background-color: #302c2c;">
+               <children>
+                  <Label layoutX="13.0" layoutY="13.0" prefHeight="42.0" prefWidth="250.0" text="         Takip Ettiğin Kişiler" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView layoutX="8.0" layoutY="66.0" prefHeight="518.0" prefWidth="264.0" style="-fx-background-color: #302c2c;" />
+                  <ListView fx:id="takip_edilenler" layoutX="26.0" layoutY="100.0" prefHeight="482.0" prefWidth="234.0" />
+               </children>
+            </AnchorPane>
+            <TextField fx:id="kullanici_ara" layoutX="153.0" layoutY="14.0" prefHeight="30.0" prefWidth="314.0" style="-fx-background-radius: 15;" />
+            <ImageView fitHeight="100.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <ScrollPane hbarPolicy="NEVER" layoutX="124.0" layoutY="100.0" prefHeight="490.0" prefWidth="530.0" style="-fx-background-color: #181414;" vmax="20.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="850.0" prefWidth="530.0" style="-fx-background-color: #181414;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="313.0" layoutY="15.0" onMouseClicked="#pop_top_10" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Pop.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="176.0" onMouseClicked="#klasic_top_10" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@klasic.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="313.0" layoutY="176.0" onMouseClicked="#dunya_top_10" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Dünya.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="340.0" onMouseClicked="#ulkeler_top_10" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ulkeler.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="313.0" layoutY="340.0" onMouseClicked="#tum_sarkilar" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Tum_sarkilar.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="502.0" onMouseClicked="#album_giris" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@album.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="280.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="663.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="280.0" layoutY="663.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="15.0" onMouseClicked="#jazz_top_10" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Jaz.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Button layoutX="5.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#jazz_calma_list" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #181414;" text="JAZZ" textFill="WHITE" />
+            <Button layoutX="5.0" layoutY="195.0" mnemonicParsing="false" onMouseClicked="#pop_calma_list" prefHeight="24.0" prefWidth="115.0" style="-fx-background-color: #181414;" text="POP" textFill="WHITE" />
+            <Button layoutX="5.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#klasic_calma_list" prefHeight="24.0" prefWidth="115.0" style="-fx-background-color: #181414;" text="KLASİC" textFill="WHITE" />
+            <Button layoutX="276.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#ara" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #181414;" text="Ara" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sahne3" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <TextField fx:id="gsarki_adi1" layoutX="58.0" layoutY="214.0" prefHeight="30.0" prefWidth="200.0" />
+            <Label layoutX="58.0" layoutY="167.0" prefHeight="30.0" prefWidth="200.0" text="Yeni Sarki Adi" textFill="#fffcfc" />
+            <Label layoutX="58.0" layoutY="262.0" prefHeight="30.0" prefWidth="200.0" text="Yeni Sanatci Adi" textFill="#fffcfc" />
+            <TextField fx:id="gsanatci_adi1" layoutX="58.0" layoutY="311.0" prefHeight="30.0" prefWidth="200.0" />
+            <TextField fx:id="gsarki_turu1" layoutX="58.0" layoutY="414.0" prefHeight="30.0" prefWidth="200.0" />
+            <Label layoutX="58.0" layoutY="359.0" prefHeight="30.0" prefWidth="200.0" text="Yeni Şarkı Türü" textFill="#fffcfc" />
+            <Button layoutX="58.0" layoutY="464.0" mnemonicParsing="false" onMouseClicked="#Sarki_guncelleme_oke1" prefHeight="54.0" prefWidth="200.0" text="Güncelle" />
+            <ImageView fitHeight="100.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="58.0" layoutY="531.0" mnemonicParsing="false" onMouseClicked="#Geri_buton" prefHeight="54.0" prefWidth="200.0" text="Geri" />
+            <ScrollPane hbarPolicy="NEVER" layoutX="290.0" layoutY="15.0" prefHeight="570.0" prefWidth="638.0" vmax="10.0" vvalue="1.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="638.0">
+                     <children>
+                        <ListView fx:id="liste" prefHeight="570.0" prefWidth="638.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ekle_fazla" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Label layoutX="96.0" layoutY="94.0" prefHeight="30.0" prefWidth="150.0" text="Süre" textFill="WHITE" />
+            <TextField fx:id="sure_gir" layoutX="97.0" layoutY="135.0" />
+            <TextField fx:id="tarih_gir" layoutX="96.0" layoutY="211.0" />
+            <TextField fx:id="sayi_gir" layoutX="96.0" layoutY="287.0" />
+            <Label layoutX="96.0" layoutY="170.0" prefHeight="30.0" prefWidth="150.0" text="Tarih" textFill="WHITE" />
+            <Label layoutX="96.0" layoutY="247.0" prefHeight="30.0" prefWidth="150.0" text="Dinlenme Sayısı" textFill="WHITE" />
+            <AnchorPane fx:id="sanatci_sahne_gir" layoutX="569.0" layoutY="67.0" prefHeight="420.0" prefWidth="308.0" visible="false">
+               <children>
+                  <Label layoutX="17.0" layoutY="23.0" prefHeight="30.0" prefWidth="150.0" text="Sanatçının Adını Giriniz" textFill="WHITE" />
+                  <Label layoutX="17.0" layoutY="123.0" prefHeight="30.0" prefWidth="150.0" text="Sanatçının Ülkesini Giriniz" textFill="WHITE" />
+                  <TextField fx:id="sad_gir" layoutX="17.0" layoutY="75.0" />
+                  <TextField fx:id="ulke_gir" layoutX="17.0" layoutY="184.0" />
+                  <Button layoutX="34.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#sanatci_yukle" prefHeight="42.0" prefWidth="115.0" text="Yükle" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="sanatci_hata" layoutX="301.0" layoutY="94.0" prefHeight="30.0" prefWidth="200.0" text="Girdiğiniz sanatçı Veritabanında yok " textFill="WHITE" visible="false" />
+            <Button layoutX="114.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#tarih_yukle" prefHeight="42.0" prefWidth="115.0" text="Yükle" />
+            <Button layoutX="26.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#admin_sayfa_geri" prefHeight="42.0" prefWidth="115.0" text="Geri" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sahne2" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Button layoutX="50.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#Sarki_ekle" prefHeight="120.0" prefWidth="250.0" text="Şarkı Ekle" />
+            <Button layoutX="350.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#Sarki_sil" prefHeight="120.0" prefWidth="250.0" text="Şarkı Sil" />
+            <Button layoutX="650.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#Sarki_guncelle" prefHeight="120.0" prefWidth="250.0" text="Şarkı Güncelle" />
+            <AnchorPane fx:id="Sarki_ekle_sahne" layoutX="50.0" layoutY="235.0" prefHeight="313.0" prefWidth="250.0" visible="false">
+               <children>
+                  <TextField fx:id="Sarki_adi_al" layoutY="43.0" prefHeight="26.0" prefWidth="250.0" />
+                  <Label layoutY="14.0" prefHeight="26.0" prefWidth="250.0" text="Şarkı Adı" textFill="WHITE" />
+                  <Label layoutY="82.0" prefHeight="26.0" prefWidth="250.0" text="Sanatçı" textFill="WHITE" />
+                  <TextField fx:id="Sanatci_adi_al" layoutY="118.0" prefHeight="26.0" prefWidth="250.0" />
+                  <TextField fx:id="Tur_al" layoutY="190.0" prefHeight="26.0" prefWidth="250.0" />
+                  <Label layoutY="156.0" prefHeight="26.0" prefWidth="250.0" text="Şarkı Türü" textFill="WHITE" />
+                  <Button layoutX="60.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#Sarki_ekle_oke" prefHeight="45.0" prefWidth="130.0" text="Ekle" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="Sarki_sil_sahne" layoutX="350.0" layoutY="235.0" prefHeight="313.0" prefWidth="250.0" visible="false">
+               <children>
+                  <TextField fx:id="Sarki_adi_al1" layoutY="43.0" prefHeight="26.0" prefWidth="250.0" />
+                  <Label layoutY="14.0" prefHeight="26.0" prefWidth="250.0" text="Şarkı Adı" textFill="WHITE" />
+                  <Label layoutY="82.0" prefHeight="26.0" prefWidth="250.0" text="Sanatçı" textFill="WHITE" />
+                  <TextField fx:id="Sanatci_adi_al1" layoutY="118.0" prefHeight="26.0" prefWidth="250.0" />
+                  <Button layoutX="60.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#Sarki_sil_oke" prefHeight="45.0" prefWidth="130.0" text="Sil" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="Sarki_guncelle_sahne" layoutX="650.0" layoutY="235.0" prefHeight="313.0" prefWidth="250.0" visible="false">
+               <children>
+                  <TextField fx:id="gsarki_adi" layoutY="43.0" prefHeight="26.0" prefWidth="250.0" />
+                  <Label layoutY="14.0" prefHeight="26.0" prefWidth="250.0" text="Güncellenecek Şarkının Adı" textFill="WHITE" />
+                  <Label layoutY="82.0" prefHeight="26.0" prefWidth="250.0" text="Güncellenecek Sanatçının Adı" textFill="WHITE" />
+                  <TextField fx:id="gsanatci_adi" layoutY="118.0" prefHeight="26.0" prefWidth="250.0" />
+                  <TextField fx:id="gsarki_turu" layoutY="190.0" prefHeight="26.0" prefWidth="250.0" />
+                  <Label layoutY="156.0" prefHeight="26.0" prefWidth="250.0" text="Güncellenecek Şarkının Türü" textFill="WHITE" />
+                  <Button layoutX="60.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#Sarki_guncelleme_oke" prefHeight="45.0" prefWidth="130.0" text="Güncelle" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="154.0" layoutY="10.0" prefHeight="54.0" prefWidth="626.0" text="                                                         ADMİN İŞLEMLERİ" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="Silme_hata" layoutX="342.0" layoutY="556.0" prefHeight="18.0" prefWidth="250.0" text="Silmek İstediğiniz Şarkı Veri Tabanında Yok" textFill="WHITE" visible="false" />
+            <Label fx:id="zaten_var" layoutX="35.0" layoutY="566.0" prefHeight="18.0" prefWidth="226.0" text="Şarkı Veritabanında Bulunmaktadır" textFill="WHITE" visible="false" />
+            <Label layoutX="821.0" layoutY="566.0" onMouseClicked="#admin_sonraki_sayfa" prefHeight="18.0" prefWidth="103.0" text="Sonraki Sayfa" textFill="WHITE" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="kayit_sahne" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;" visible="false">
+         <children>
+            <Label layoutX="282.0" layoutY="94.0" prefHeight="42.0" prefWidth="386.0" text="                        Kayıt Olma Ekranı" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="kayit_ad" layoutX="369.0" layoutY="209.0" prefHeight="26.0" prefWidth="211.0" />
+            <TextField fx:id="kayit_sifre" layoutX="369.0" layoutY="287.0" prefHeight="26.0" prefWidth="211.0" />
+            <Label layoutX="369.0" layoutY="171.0" prefHeight="30.0" prefWidth="211.0" text="Kullanıcı Adı Giriniz" textFill="WHITE" />
+            <Label layoutX="369.0" layoutY="248.0" prefHeight="30.0" prefWidth="211.0" text="Şifre Giriniz" textFill="WHITE" />
+            <Button layoutX="369.0" layoutY="465.0" mnemonicParsing="false" onMouseClicked="#Kayit_ol1" prefHeight="46.0" prefWidth="211.0" text="Kayıt Ol Ve Giriş Ekranına Dön" />
+            <ImageView fitHeight="100.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="kayit_hata" layoutX="257.0" layoutY="144.0" prefHeight="26.0" prefWidth="435.0" text="Girdiğiniz Kullanıcı Adı Kullanılıyor Lütfen Başka Bir Ad Giriniz Veya Şifre Giriniz" textFill="#fffefe" visible="false" />
+            <Label layoutX="251.0" layoutY="334.0" prefHeight="26.0" prefWidth="485.0" text="Lütfen Normal Kullanıcımı Yoksa Premium Kullanıcı Olarak Kayıt Olmak İstediğinizi Yazınız" textFill="WHITE" />
+            <Label layoutX="375.0" layoutY="367.0" prefHeight="26.0" prefWidth="200.0" text="             Premium Paralıdır " textFill="WHITE" />
+            <TextField fx:id="yetki" layoutX="369.0" layoutY="406.0" prefHeight="26.0" prefWidth="211.0" />
+            <Label fx:id="kayıt_hata" layoutX="333.0" layoutY="545.0" prefHeight="30.0" prefWidth="308.0" text="         Girilen Yetki Yanlıştır Lütfen Tekrar Dene" textFill="WHITE" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sahne1" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #181414;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="130.0" layoutY="181.0" onMouseClicked="#Kullanici_mouse" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@buton1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="620.0" layoutY="181.0" onMouseClicked="#Admin_mouse" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@buton2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="207.0" layoutY="79.0" prefHeight="42.0" prefWidth="506.0" text="                                         Lütfen Girişinizi Seçiniz" textAlignment="CENTER" textFill="#fffcfc">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="ksifre_sahne" layoutX="130.0" layoutY="329.0" prefHeight="264.0" prefWidth="200.0" visible="false">
+               <children>
+                  <TextField fx:id="kullanici_giris" layoutY="50.0" />
+                  <TextField fx:id="kullanici_sifre" layoutY="140.0" />
+                  <Label layoutY="14.0" prefHeight="26.0" prefWidth="150.0" text="Kullanıcı Adınızı Giriniz" textFill="#fcfafa" />
+                  <Label layoutY="100.0" prefHeight="18.0" prefWidth="150.0" text="Şifrenizi Giriniz" textFill="#fcfbfb" />
+                  <Button layoutY="199.0" mnemonicParsing="false" onMouseClicked="#kgiris" prefHeight="42.0" prefWidth="150.0" text="Giriş" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="asifre_sahne" layoutX="620.0" layoutY="329.0" prefHeight="264.0" prefWidth="200.0" visible="false">
+               <children>
+                  <TextField fx:id="admin_giris" layoutY="50.0" />
+                  <TextField fx:id="admin_sifre" layoutY="140.0" />
+                  <Label layoutY="14.0" prefHeight="26.0" prefWidth="150.0" text="Admin Adınızı Giriniz" textFill="#fcfafa" />
+                  <Label layoutY="100.0" prefHeight="18.0" prefWidth="150.0" text="Şifrenizi Giriniz" textFill="#fcfbfb" />
+                  <Button fx:id="agiris_buton" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#agiris" prefHeight="42.0" prefWidth="150.0" text="Giriş" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="kullanici_hata" layoutX="130.0" layoutY="132.0" prefHeight="42.0" prefWidth="225.0" text="Hatalı Giris Yaptınız " textAlignment="CENTER" textFill="WHITE" visible="false" />
+            <Label fx:id="admin_hata" layoutX="620.0" layoutY="132.0" prefHeight="42.0" prefWidth="225.0" text="Hatalı Giris Yaptınız Veya Admin Değilsiniz" textAlignment="CENTER" textFill="WHITE" visible="false" />
+            <Label layoutX="620.0" layoutY="14.0" prefHeight="18.0" prefWidth="94.0" text="Kayıt Olmak İçin " textFill="WHITE" />
+            <Label layoutX="788.0" layoutY="15.0" prefHeight="18.0" prefWidth="50.0" text="Tıklayın" textFill="WHITE" />
+            <Button layoutX="714.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#Kayit_ol" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #181414;" text="Kayıt Ol'a" textFill="#2222f2" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

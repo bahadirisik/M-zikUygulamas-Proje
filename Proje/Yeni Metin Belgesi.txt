@@ -1,0 +1,446 @@
+package sample;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+
+import java.sql.*;
+import java.util.ArrayList;
+
+public class Controller {
+    private static Connection con=null;
+    private String gad,gSanatci_ad,gTur,kullanici_adii;
+
+    public String getKullanici_adii() {
+        return kullanici_adii;
+    }
+
+    public void setKullanici_adii(String kullanici_adii) {
+        this.kullanici_adii = kullanici_adii;
+    }
+
+    public String getGad() {
+        return gad;
+    }
+
+    public void setGad(String gad) {
+        this.gad = gad;
+    }
+
+    public String getgSanatci_ad() {
+        return gSanatci_ad;
+    }
+
+    public void setgSanatci_ad(String gSanatci_ad) {
+        this.gSanatci_ad = gSanatci_ad;
+    }
+
+    public String getgTur() {
+        return gTur;
+    }
+
+    public void setgTur(String gTur) {
+        this.gTur = gTur;
+    }
+
+    @FXML
+    private Label label1;
+    @FXML
+    private Label admin_hata;
+    @FXML
+    private Label Silme_hata;
+    @FXML
+    private Label kayit_hata;
+    @FXML
+    private Label kullanici_hata;
+    @FXML
+    private Label isim;
+    @FXML
+    private Button kullanici_buton;
+    @FXML
+    private ListView liste;
+    @FXML
+    private ListView tum_sarkilar_list;
+    @FXML
+    private Button admin_buton;
+    @FXML
+    private AnchorPane sahne1;
+    @FXML
+    private AnchorPane sahne4;
+    @FXML
+    private AnchorPane asifre_sahne;
+    @FXML
+    private AnchorPane Sarki_ekle_sahne;
+    @FXML
+    private AnchorPane Sarki_sil_sahne;
+    @FXML
+    private AnchorPane sahne2;
+    @FXML
+    private AnchorPane sahne3;
+    @FXML
+    private AnchorPane kayit_sahne;
+    @FXML
+    private AnchorPane tum_sarkilar_sahne;
+    @FXML
+    private AnchorPane Sarki_guncelle_sahne;
+    @FXML
+    private AnchorPane ksifre_sahne;
+    @FXML
+    private TextField admin_giris;
+    @FXML
+    private TextField gsarki_adi;
+    @FXML
+    private TextField yetki;
+    @FXML
+    private TextField gsanatci_adi;
+    @FXML
+    private TextField gsarki_turu;
+    @FXML
+    private TextField gsarki_adi1;
+    @FXML
+    private TextField gsanatci_adi1;
+    @FXML
+    private TextField kayit_ad;
+    @FXML
+    private TextField kayit_sifre;
+    @FXML
+    private TextField gsarki_turu1;
+    @FXML
+    private TextField Sarki_adi_al;
+    @FXML
+    private TextField Sanatci_adi_al;
+    @FXML
+    private TextField Tur_al;
+    @FXML
+    private TextField Sarki_adi_al1;
+    @FXML
+    private TextField Sanatci_adi_al1;
+    @FXML
+    private TextField admin_sifre;
+    @FXML
+    private Button agiris_buton;
+    @FXML
+    private TextField kullanici_giris;
+    @FXML
+    private TextField kullanici_sifre;
+    public void sqlac()
+    {
+        String link="jdbc:mysql://localhost:3306/proje3"+"?useUnicode=true&characterEncoding=utf8";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("driver bulunamadı");
+        }
+        try {
+            con = DriverManager.getConnection(link,"root","");
+            System.out.println("bağlandı");
+        } catch (SQLException throwables) {
+            System.out.println("veri tabanına bağlanamadı");
+        }
+    }
+
+    public void Admin_mouse(MouseEvent mouseEvent)
+    {
+        asifre_sahne.setVisible(true);
+        ksifre_sahne.setVisible(false);
+        kullanici_hata.setVisible(false);
+    }
+    public void Kullanici_mouse(MouseEvent mouseEvent)
+    {
+        asifre_sahne.setVisible(false);
+        ksifre_sahne.setVisible(true);
+        admin_hata.setVisible(false);
+
+    }
+    public void agiris(MouseEvent mouseEvent)
+    {
+        sqlac();
+        String ad_girilen=admin_giris.getText().trim();
+        String parola_girilen=admin_sifre.getText().trim();
+        String sorgu="Select * From giris where";
+        String sorgu1=sorgu+" Kullanici_adi='"+ad_girilen+"' and Sifre='"+parola_girilen+"' and Yetki='Admin'";
+        System.out.println(sorgu1);
+        try {
+            Statement a= con.createStatement();
+            ResultSet rs = a.executeQuery(sorgu1);
+            if(rs.next())
+            {
+                sahne1.setVisible(false);
+                sahne2.setVisible(true);
+                sahne3.setVisible(true);
+            }
+            else
+            {
+                admin_hata.setVisible(true);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void Kayit_ol(MouseEvent mouseEvent)
+    {
+        sahne1.setVisible(false);
+        kayit_sahne.setVisible(true);
+    }
+    public void Kayit_ol1(MouseEvent mouseEvent)
+    {
+        sqlac();
+        String ad=kayit_ad.getText().trim();
+        String parola=kayit_sifre.getText().trim();
+        String yetki1=yetki.getText().trim();
+        String sorgu="Select * From giris where";
+        String sorgu1=sorgu+" Kullanici_adi='"+ad+"' and Sifre='"+parola+"'";
+        System.out.println(ad);
+        System.out.println(yetki1);
+        System.out.println(parola);
+        String sorgu2="INSERT INTO `giris` (`Kid`, `Kullanici_adi`, `Sifre`, `Yetki`) VALUES ";
+        try {
+            Statement a= con.createStatement();
+            ResultSet rs = a.executeQuery(sorgu1);
+            if(rs.next())
+            {
+                kayit_hata.setVisible(true);
+            }
+            else
+            {
+                if(parola.equals(""))
+                {
+                    kayit_hata.setVisible(true);
+                }
+                else
+                {
+                    Statement a1= con.createStatement();
+                    String sorgu3=sorgu2+"(NULL, '"+ad+"' , '"+parola+"' , '"+yetki1+"')";
+                    a1.executeUpdate(sorgu3);
+                    sahne4.setVisible(false);
+                    sahne1.setVisible(true);
+                }
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void anasayfaya_geri(MouseEvent mouseEvent)
+    {
+
+        while(tum_sarkilar_list.getItems().size()!=0)
+        {
+            tum_sarkilar_list.getItems().remove(0);
+        }
+
+        tum_sarkilar_sahne.setVisible(false);
+
+        sahne4.setVisible(true);
+
+    }
+    public void tum_sarkilar(MouseEvent mouseEvent)
+    {
+        sqlac();
+        sahne4.setVisible(false);
+        tum_sarkilar_sahne.setVisible(true);
+
+        String sorgu1="Select * From sarkilar ";
+        try {
+
+            Statement a= con.createStatement();
+            ResultSet rs = a.executeQuery(sorgu1);
+            while (rs.next())
+            {
+                String b=rs.getString("Sarki_adi");
+                String c=rs.getString("Sanatci");
+                int d = rs.getInt("Tur");
+                String sorgu2="SELECT * FROM turler where Tid="+d;
+                Statement a1= con.createStatement();
+                ResultSet rs1 = a1.executeQuery(sorgu2);
+                if(rs1.next())
+                {
+                    String e = rs1.getString("Tur_ad");
+                    String hepsi = b+"       "+c+"          "+e;
+                    tum_sarkilar_list.getItems().add(hepsi);
+
+                }
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+    public void kgiris(MouseEvent mouseEvent)
+    {
+        sqlac();
+        String ad_girilen=kullanici_giris.getText().trim();
+        String parola_girilen=kullanici_sifre.getText().trim();
+        String sorgu="Select * From giris where";
+        String sorgu1=sorgu+" Kullanici_adi='"+ad_girilen+"' and Sifre='"+parola_girilen+"' and Yetki!='Admin'";
+        System.out.println(sorgu1);
+        setKullanici_adii(ad_girilen);
+        try {
+            Statement a= con.createStatement();
+            ResultSet rs = a.executeQuery(sorgu1);
+            if(rs.next())
+            {
+
+                sahne1.setVisible(false);
+                isim.setText("   "+getKullanici_adii());
+                isim.setTextFill(Color.WHITE);
+                sahne4.setVisible(true);
+            }
+            else
+            {
+                kullanici_hata.setVisible(true);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+    public void Sarki_ekle(MouseEvent mouseEvent)
+    {
+        Sarki_ekle_sahne.setVisible(true);
+        Sarki_sil_sahne.setVisible(false);
+        Sarki_guncelle_sahne.setVisible(false);
+    }
+    public void Sarki_sil(MouseEvent mouseEvent)
+    {
+        Sarki_ekle_sahne.setVisible(false);
+        Sarki_sil_sahne.setVisible(true);
+        Sarki_guncelle_sahne.setVisible(false);
+    }
+    public void Sarki_guncelle(MouseEvent mouseEvent)
+    {
+        Sarki_ekle_sahne.setVisible(false);
+        Sarki_sil_sahne.setVisible(false);
+        Sarki_guncelle_sahne.setVisible(true);
+    }
+    public void Sarki_ekle_oke(MouseEvent mouseEvent)
+    {
+        sqlac();
+        String ad=Sarki_adi_al.getText().trim();
+        String Sanatci_ad=Sanatci_adi_al.getText().trim();
+        String Tur=Tur_al.getText().trim();
+        String Tur_sorgu="Select * From turler where";
+        String Tur_sorgu1=Tur_sorgu+" Tur_ad='"+Tur+"'";
+        String sorgu="INSERT INTO `sarkilar` (`Sarki_adi`, `Sanatci`, `Tur`) VALUES ";
+        int Tid = 0;
+        try {
+            Statement a= con.createStatement();
+            ResultSet rs = a.executeQuery(Tur_sorgu1);
+
+            if(rs.next())
+            {
+               Tid=rs.getInt("Tid");
+                System.out.println(Tid);
+            }
+            String sorgu1=sorgu+"('"+ad+"' , '"+Sanatci_ad+"' , "+Tid+")";
+            Statement a1= con.createStatement();
+            a1.executeUpdate(sorgu1);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void Sarki_sil_oke(MouseEvent mouseEvent)
+    {
+        sqlac();
+        String ad=Sarki_adi_al1.getText().trim();
+        String Sanatci_ad=Sanatci_adi_al1.getText().trim();
+        String sorgu="Select * From sarkilar where "+"Sarki_adi='"+ad+"' and Sanatci='"+Sanatci_ad+"'";
+        System.out.println(sorgu);
+        String silme= "DELETE FROM `sarkilar` WHERE `sarkilar`.`sid` =";
+        String silme2 = null;
+        try {
+            Statement a= con.createStatement();
+            ResultSet rs = a.executeQuery(sorgu);
+            if(rs.next())
+            {
+                int Sid = rs.getInt("sid");
+                silme2=silme+Sid;
+                a.executeUpdate(silme2);
+            }
+            else
+            {
+                Silme_hata.setVisible(true);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void Sarki_guncelleme_oke(MouseEvent mouseEvent)
+    {
+       setGad(gsarki_adi.getText().trim());
+       setgSanatci_ad(gsanatci_adi.getText().trim());
+       setgTur(gsarki_turu.getText().trim());
+       sahne2.setVisible(false);
+    }
+    public void Geri_buton (MouseEvent mouseEvent)
+    {
+        sahne2.setVisible(true);
+    }
+    public void Sarki_guncelleme_oke1(MouseEvent mouseEvent)
+    {
+        sqlac();
+        String ad=gsarki_adi1.getText().trim();
+        String Sanatci_ad=gsanatci_adi1.getText().trim();
+        String tur=gsarki_turu1.getText().trim();
+        String Tur_sorgu="Select * From turler where";
+        String Tur_sorgu1=Tur_sorgu+" Tur_ad='"+tur+"'";
+        String sorgu1="SELECT * FROM sarkilar";
+        String sorgu7="SELECT * FROM sarkilar where Sarki_adi='"+getGad()+"' and Sanatci='"+getgSanatci_ad()+"'";
+        int Tid = 0;
+        int Sid= 0;
+        try {
+            Statement a2= con.createStatement();
+            ResultSet rs2 = a2.executeQuery(Tur_sorgu1);
+            if(rs2.next())
+            {
+                Tid=rs2.getInt("Tid");
+                System.out.println(Tid);
+            }
+            Statement a3= con.createStatement();
+            ResultSet rs3 = a3.executeQuery(sorgu7);
+            if(rs3.next())
+            {
+                Sid=rs3.getInt("sid");
+            }
+
+            String guncelleme="UPDATE `sarkilar` SET `Sarki_adi` = '"+ad+"', `Sanatci` = '"+Sanatci_ad+"', `Tur` = '"+Tid+"' WHERE `sarkilar`.`sid` = "+Sid;
+
+            a3.executeUpdate(guncelleme);
+
+                Statement a= con.createStatement();
+                ResultSet rs = a.executeQuery(sorgu1);
+                while (rs.next())
+                {
+                    String b=rs.getString("Sarki_adi");
+                    String c=rs.getString("Sanatci");
+                    int d = rs.getInt("Tur");
+                    String sorgu2="SELECT * FROM turler where Tid="+d;
+                    Statement a1= con.createStatement();
+                    ResultSet rs1 = a1.executeQuery(sorgu2);
+                    if(rs1.next())
+                    {
+                        String e = rs1.getString("Tur_ad");
+                        String hepsi = b+"       "+c+"          "+e;
+                        liste.getItems().add(hepsi);
+
+                    }
+                }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
+}
