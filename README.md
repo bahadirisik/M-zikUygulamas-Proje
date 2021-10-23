@@ -1,1 +1,1 @@
-# M-zikUygulamas-Proje
+# MuzikUygulamasi-Proje
